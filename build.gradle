@@ -7,6 +7,10 @@ plugins {
 group = 'com.nemis'
 version = '0.0.1-SNAPSHOT'
 
+bootJar {
+    archiveFileName = "nemis.jar"
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
