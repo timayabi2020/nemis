@@ -14,8 +14,6 @@ import com.nemis.techhack.dto.CompetencyCreateRequest;
 import com.nemis.techhack.dto.SchoolCreateRequest;
 import com.nemis.techhack.interfaces.IStudentProfile;
 import com.nemis.techhack.model.StudentProfile;
-import com.nemis.techhack.services.StudentProfileService;
-
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
