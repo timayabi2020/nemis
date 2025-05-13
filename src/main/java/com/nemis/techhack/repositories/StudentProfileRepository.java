@@ -11,7 +11,6 @@ import com.nemis.techhack.model.StudentProfile;
 public interface StudentProfileRepository  extends JpaRepository<StudentProfile, Long> {
     Optional<StudentProfile> findByUpi(String upi);
     List<StudentProfile> findByLocation(String location);
-    List<StudentProfile> findBySchool(String school);
     List<StudentProfile> findByParentGuardian(String parentGuardian);
     List<StudentProfile> findByDateOfBirth(LocalDate dateOfBirth);
 
