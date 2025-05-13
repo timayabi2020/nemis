@@ -1,6 +1,5 @@
 package com.nemis.techhack.model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,6 +12,7 @@ public class StudentProfile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true)
     private String upi;
 
@@ -36,11 +36,8 @@ public class StudentProfile {
     @Embedded
     private ParentGuardian parentGuardian;
 
-    @Embedded
-    private School school;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<LearningAreaMilestone> milestones;
+    private List<SchoolRecord> schoolHistory;
 }
 
 @Embeddable
@@ -86,25 +83,32 @@ class ParentGuardian {
     private String incomeLevel;
 }
 
-@Embeddable
+@Entity
 @Data
-class School {
+class SchoolRecord {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String schoolCode;
     private String schoolName;
     private String admissionNumber;
     private String gradeLevel;
     private LocalDate enrollmentDate;
     private String currentStatus;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<LearningArea> learningAreas;
 }
 
 @Entity
 @Data
-class LearningAreaMilestone {
+class LearningArea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String learningArea;
+    private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Competency> competencies;
