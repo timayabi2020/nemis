@@ -3,18 +3,20 @@ package com.nemis.techhack.services;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.nemis.techhack.interfaces.IStudentProfile;
 import com.nemis.techhack.model.StudentProfile;
 import com.nemis.techhack.repositories.StudentProfileRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 public class StudentProfileService implements IStudentProfile {
     // Inject the repository
     private final StudentProfileRepository studentProfileRepository;
 
-    public StudentProfileService(StudentProfileRepository studentProfileRepository) {
-        this.studentProfileRepository = studentProfileRepository;
-    }
 
     @Override
     public ResponseEntity<?> createStudentProfile(StudentProfile studentProfile) {
@@ -41,7 +43,7 @@ public class StudentProfileService implements IStudentProfile {
             return ResponseEntity.notFound().build();
         }
         // Update the student profile
-        
+
         studentProfileRepository.save(studentProfile);
         return ResponseEntity.ok("Student profile updated successfully");
     }
