@@ -11,23 +11,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nemis.techhack.interfaces.IStudentProfile;
 import com.nemis.techhack.model.StudentProfile;
 import com.nemis.techhack.services.StudentProfileService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/students")
 @Tag(name = "Student Profile API", description = "Operations related to student profiles")
+@RequiredArgsConstructor
 public class StudentProfileController {
 
     // Inject the service
-    private final StudentProfileService studentProfileService;
-
-    public StudentProfileController(StudentProfileService studentProfileService) {
-        this.studentProfileService = studentProfileService;
-    }
-
+    private final IStudentProfile studentProfileService;
     //Define endpoints for CRUD operations
     @PostMapping("/student-profile")
     public ResponseEntity<?> createStudentProfile(@RequestBody StudentProfile studentProfile) {
