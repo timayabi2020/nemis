@@ -83,39 +83,4 @@ class ParentGuardian {
     private String incomeLevel;
 }
 
-@Entity
-@Data
-class SchoolRecord {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String schoolCode;
-    private String schoolName;
-    private String admissionNumber;
-    private LocalDate enrollmentDate;
-    private LocalDate graduationDate;
-    private LocalDate endDate;
-    private String currentStatus;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Competency> competencies;
-}
-
-@Entity
-@Data
-class Competency {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String competencyCode;
-    private String competencyName;
-    private String description;
-    private String gradeLevel;
-    private String achievementLevel; // e.g., Emerging, Developing, Proficient
-    private LocalDate assessmentDate;
-    private String assessedBy;
-    private String tscno;
-    // Optionally add: evidenceFiles, remediationPlan
-}
